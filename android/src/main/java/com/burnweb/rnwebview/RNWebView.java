@@ -82,11 +82,6 @@ class RNWebView extends WebView implements LifecycleEventListener {
         }
 
         // Support for full-screen video
-        public CustomWebChromeClient(Activity activity, WebView webView) {
-            mWebView = webView;
-            mActivity = activity;
-        }
-
         private final FrameLayout.LayoutParams FULLSCREEN_LAYOUT_PARAMS = new FrameLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, Gravity.CENTER);
 
