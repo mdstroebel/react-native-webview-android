@@ -82,6 +82,11 @@ class RNWebView extends WebView implements LifecycleEventListener {
         }
 
         // Support for full-screen video
+        public CustomWebChromeClient(Activity activity, WebView webView) {
+            mWebView = webView;
+            mActivity = activity;
+        }
+
         private final FrameLayout.LayoutParams FULLSCREEN_LAYOUT_PARAMS = new FrameLayout.LayoutParams(
                 LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, Gravity.CENTER);
 
@@ -131,13 +136,6 @@ class RNWebView extends WebView implements LifecycleEventListener {
 
     }
 
-    protected class GeoWebChromeClient extends CustomWebChromeClient {
-        @Override
-        public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
-            callback.invoke(origin, true, false);
-        }
-    }
-
     public RNWebView(RNWebViewManager viewManager, ThemedReactContext reactContext) {
         super(reactContext);
 
@@ -161,7 +159,7 @@ class RNWebView extends WebView implements LifecycleEventListener {
         }
 
         this.setWebViewClient(new EventWebClient());
-        this.setWebChromeClient(getCustomClient());
+        this.setWebChromeClient(new CustomWebChromeClient(reactContext.getCurrentActivity(), this));
     }
 
     public void setCharset(String charset) {
@@ -194,14 +192,6 @@ class RNWebView extends WebView implements LifecycleEventListener {
 
     public String getBaseUrl() {
         return this.baseUrl;
-    }
-
-    public CustomWebChromeClient getCustomClient() {
-        return new CustomWebChromeClient();
-    }
-
-    public GeoWebChromeClient getGeoClient() {
-        return new GeoWebChromeClient();
     }
 
     public RNWebViewModule getModule() {

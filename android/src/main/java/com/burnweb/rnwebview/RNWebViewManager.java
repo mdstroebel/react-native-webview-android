@@ -46,7 +46,7 @@ public class RNWebViewManager extends SimpleViewManager<RNWebView> {
         // height being 0.
         rnwv.setLayoutParams(
                 new LayoutParams(LayoutParams.MATCH_PARENT,
-                    LayoutParams.MATCH_PARENT));
+                        LayoutParams.MATCH_PARENT));
         CookieManager.getInstance().setAcceptCookie(true); // add default cookie support
         CookieManager.getInstance().setAcceptFileSchemeCookies(true); // add default cookie support
 
@@ -89,18 +89,6 @@ public class RNWebViewManager extends SimpleViewManager<RNWebView> {
     @ReactProp(name = "builtInZoomControls", defaultBoolean = false)
     public void setBuiltInZoomControls(RNWebView view, boolean builtInZoomControls) {
         view.getSettings().setBuiltInZoomControls(builtInZoomControls);
-    }
-
-    @ReactProp(name = "geolocationEnabled", defaultBoolean = false)
-    public void setGeolocationEnabled(RNWebView view, boolean geolocationEnabled) {
-        view.getSettings().setGeolocationEnabled(geolocationEnabled);
-
-        if(geolocationEnabled) {
-            view.setWebChromeClient(view.getGeoClient());
-        }
-        else {
-            view.setWebChromeClient(view.getCustomClient());
-        }
     }
 
     @ReactProp(name = "javaScriptEnabled", defaultBoolean = true)
@@ -172,9 +160,9 @@ public class RNWebViewManager extends SimpleViewManager<RNWebView> {
     @Override
     public @Nullable Map<String, Integer> getCommandsMap() {
         return MapBuilder.of(
-            "goBack", GO_BACK,
-            "goForward", GO_FORWARD,
-            "reload", RELOAD
+                "goBack", GO_BACK,
+                "goForward", GO_FORWARD,
+                "reload", RELOAD
         );
     }
 

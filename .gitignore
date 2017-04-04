@@ -12,3 +12,12 @@
 hs_err_pid*
 
 .DS_Store
+android/.idea/compiler.xml
+android/.idea/gradle.xml
+android/.idea/misc.xml
+android/.idea/modules.xml
+android/.idea/runConfigurations.xml
+android/.idea/workspace.xml
+android/.idea/copyright/profiles_settings.xml
+android/android.iml
+android/local.properties
